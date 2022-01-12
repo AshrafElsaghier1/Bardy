@@ -1,0 +1,673 @@
+.navbar {
+    background-color: $mainColor;
+    padding: 0;
+    box-shadow: 0 0 10px 2px #00000085;
+    width: 100%;
+
+    .navbar_inner {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        .brand_logo {
+            margin-right: 1rem;
+            @media #{$mediaS} {
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+        .nav_items {
+            width: 48%;
+            .navbar_ul {
+                display: flex;
+                justify-content: space-between;
+                align-self: center;
+                .nav_item {
+                    padding: 25px 0;
+                    position: relative;
+                    cursor: pointer;
+
+                    .nav_link {
+                        color: #222;
+                        font-weight: 500;
+                        font-family: $secFont;
+                        letter-spacing: 0.25px;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        position: relative;
+                        &::before {
+                            content: "";
+                            left: 0;
+                            bottom: -4px;
+                            width: 0;
+                            height: 2px;
+                            background-color: #222;
+                            position: absolute;
+                            transition: width 0.3s ease-in-out;
+                        }
+                    }
+                    .nav_item_details {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        min-width: 230px;
+                        background-color: #222;
+                        padding: 20px 20px 25px;
+                        opacity: 0;
+                        overflow: hidden;
+                        transition: 0.3s ease-in-out;
+                        transform: translateY(50px);
+                        cursor: auto;
+                        visibility: hidden;
+                        z-index: 2;
+                        box-shadow: 0 0 10px 0 $mainColor;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        ul {
+                            li {
+                                margin-bottom: 13px;
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                                a {
+                                    display: block;
+                                    font-family: $secFont;
+                                    font-size: 14px;
+                                    color: $linkColor;
+                                    text-transform: capitalize;
+                                    letter-spacing: 0.25px;
+                                    transition: 0.4s ease-in-out;
+                                    &:hover {
+                                        padding-left: 10px;
+                                        color: $mainColor;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.shop {
+                        position: static;
+                        .nav_item_details {
+                            width: 100%;
+                            ul {
+                                justify-content: space-between;
+                                .col {
+                                    margin-bottom: 0;
+                                    &:last-child {
+                                        max-width: 20%;
+                                        a {
+                                            display: block;
+                                            overflow: hidden;
+                                            img {
+                                                width: 100%;
+                                                transition: 0.5s ease-in-out;
+                                            }
+                                            &:hover {
+                                                padding: 0;
+                                                img {
+                                                    transform: scale(1.2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    h4 {
+                                        border-bottom: 1px solid #d0a97e80;
+                                        padding: 5px 0 15px 0;
+                                        margin-bottom: 15px;
+                                        a {
+                                            color: $linkColor;
+                                            &:hover {
+                                                color: $mainColor;
+                                                padding: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        .nav_link {
+                            &::before {
+                                width: 100%;
+                            }
+                        }
+                        .nav_item_details {
+                            transform: translateY(0);
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }
+        .nav_action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .nav_action_left {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                & > div {
+                    margin-right: 25px;
+                    position: relative;
+                    padding: 25px 0;
+                }
+                .currency_container {
+                    cursor: auto;
+                    .current_currency {
+                        font-family: $secFont;
+                        cursor: pointer;
+                        font-weight: 500;
+                        width: 40px;
+                        display: inline-block;
+                    }
+                }
+                .dropdown_toggler {
+                    svg {
+                        position: relative;
+                        z-index: -1;
+                    }
+                }
+                .dropdown_details {
+                    background-color: #222;
+                    color: $linkColor;
+                    position: absolute;
+                    right: 0;
+                    width: 260px;
+                    text-align: left;
+                    top: 100%;
+                    font-size: 14px;
+                    font-family: $secFont;
+                    z-index: 3;
+                    height: 0;
+                    overflow: hidden;
+                    transition: 0.4s ease-in-out;
+                    box-shadow: 0 0 10px 0 $mainColor;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    &.switcher-dropdown {
+                        &.active {
+                            height: 300px;
+                        }
+                    }
+                    &.active {
+                        height: 163px;
+                    }
+                    ul {
+                        padding: 20px;
+                        li {
+                            margin-bottom: 13px;
+                            cursor: pointer;
+                            transition: 0.4s ease-in-out;
+                            letter-spacing: 0.25px;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            a {
+                                color: $linkColor;
+                                transition: 0.5s ease-in-out;
+                                font-size: 14px;
+                                font-family: $secFont;
+                            }
+                            &:hover {
+                                color: $mainColor;
+                                padding-left: 10px;
+                                a {
+                                    color: $mainColor;
+                                }
+                            }
+                        }
+                    }
+                }
+                .wishlist {
+                    a {
+                        color: #222;
+                        svg {
+                            fill: #222;
+                        }
+                    }
+                }
+                .search_container {
+                    position: static;
+                    .dropdown_details {
+                        left: 0;
+                        width: 100%;
+                        background-color: rgb(165, 37, 37);
+                        .input_container {
+                            display: flex;
+                            align-items: center;
+                            position: relative;
+                            height: 100%;
+                            input {
+                                width: 100%;
+                                padding: 0 35px 0 15px;
+                                border: 1px solid #ccc;
+                                color: #222;
+                                height: 100%;
+                                font-size: 15px;
+                                font-family: $secFont;
+                                &::placeholder {
+                                    font-family: $secFont;
+                                    font-size: 15px;
+                                    letter-spacing: 0.5px;
+                                }
+
+                                &::-webkit-search-decoration,
+                                &::-webkit-search-cancel-button,
+                                &::-webkit-search-results-button,
+                                &::-webkit-search-results-decoration {
+                                    -webkit-appearance: none;
+                                }
+                            }
+                            button {
+                                position: absolute;
+                                right: 0px;
+                                top: 50%;
+                                transform: translateY(-50%);
+
+                                display: block;
+                                height: 100%;
+                                width: 40px;
+                                svg {
+                                    transition: 0.5s ease-in-out;
+                                }
+                                &:hover {
+                                    svg {
+                                        fill: $mainColor;
+                                    }
+                                }
+                            }
+                        }
+                        &.active {
+                            height: 50px;
+                        }
+                    }
+                }
+                .shopcart_container {
+                    .shopcart_toggler {
+                        position: relative;
+                        .amount {
+                            position: absolute;
+                            top: -10px;
+                            right: -10px;
+                            font-family: $secFont;
+                            font-size: 15px;
+                        }
+                    }
+                    .shopcart_sidebar {
+                        font-family: $secFont;
+                        color: $linkColor;
+                        background-color: #222;
+                        font-weight: 500;
+                        .offcanvas-header {
+                            border-bottom: 1px solid #3c3c3c;
+                            h5 {
+                                font-size: 23px;
+                                text-transform: capitalize;
+                            }
+                            .close_btn {
+                                svg {
+                                    fill: $linkColor;
+                                    transition: 0.5s ease-in-out;
+                                    transform: rotateZ(-360deg);
+                                }
+                                &:hover {
+                                    svg {
+                                        fill: $mainColor;
+                                        transform: rotateZ(360deg);
+                                    }
+                                }
+                            }
+                        }
+                        .offcanvas-body {
+                            overflow: hidden;
+                            .shopcart_products {
+                                max-height: 65vh;
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                                min-height: 60vh;
+                                border-bottom: 1px solid #3c3c3c;
+                                &::-webkit-scrollbar {
+                                    width: 7px;
+                                }
+
+                                &::-webkit-scrollbar-track {
+                                    box-shadow: inset 0 0 10px $mainColor;
+                                }
+
+                                &::-webkit-scrollbar-thumb {
+                                    background-color: $mainColor;
+                                    outline: 1px solid rgb(151, 112, 3);
+                                }
+                                .single_product {
+                                    display: flex;
+
+                                    width: 100%;
+                                    padding: 10px 0;
+                                    .img_container {
+                                        position: relative;
+                                        a {
+                                            img {
+                                                width: 70px;
+                                                border-radius: 5px;
+                                            }
+                                        }
+                                        svg {
+                                            transition: 0.5s ease-in-out;
+                                            fill: $linkColor;
+                                            position: absolute;
+                                            left: 0px;
+                                            top: 0px;
+                                            &:hover {
+                                                fill: $mainColor;
+                                            }
+                                        }
+                                    }
+                                    .product_info {
+                                        margin-left: 1.3rem;
+                                        h4 {
+                                            margin-bottom: 20px;
+                                            font-size: 18px;
+                                            line-height: 1.5;
+                                            a {
+                                                color: $linkColor;
+                                                transition: 0.5s ease-in-out;
+                                                &:hover {
+                                                    color: $mainColor;
+                                                }
+                                            }
+                                            .price {
+                                                font-size: 15px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .shopcart_actions {
+                                padding: 1.3rem 0;
+
+                                .total {
+                                    font-size: 16px;
+                                    font-family: $secFont;
+                                    font-weight: 600;
+                                    letter-spacing: 0.3px;
+                                    color: $linkColor;
+                                }
+                                button {
+                                    position: relative;
+                                    width: 150px;
+                                    border: 0;
+                                    background-color: #000;
+                                    color: $mainColor;
+                                    display: inline-block;
+                                    margin-top: 15px;
+                                    padding: 0.55rem 1rem;
+                                    z-index: 2;
+                                    font-size: 16px;
+                                    letter-spacing: 0.3px;
+                                    font-weight: 500;
+                                    font-family: $secFont;
+                                    transition: 0.5s ease-in-out;
+                                    text-transform: capitalize;
+                                    &:first-of-type {
+                                        margin-right: 15px;
+                                    }
+                                    &:after {
+                                        position: absolute;
+                                        content: "";
+                                        right: 0;
+                                        top: 0;
+                                        height: 100%;
+                                        width: 0;
+                                        background-color: $mainColor;
+                                        transition: 0.5s ease-in-out;
+                                        z-index: -1;
+                                    }
+                                    &:hover {
+                                        color: #000;
+                                        &::after {
+                                            width: 100%;
+                                            left: 0;
+                                            right: auto;
+                                        }
+                                    }
+                                    @media (max-width: 350px) {
+                                        width: 130px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .nav_action_right {
+                .toggle_menu {
+                    display: flex;
+                    flex-direction: column;
+                    width: 30px;
+                    align-items: flex-end;
+                    position: relative;
+                    top: -2px;
+                    .bar {
+                        width: 100%;
+                        height: 2px;
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 5px;
+                        background-color: #222;
+                        transition: width 0.5s ease-in-out;
+                        &:first-child {
+                            width: 80%;
+                        }
+                        &:nth-child(2) {
+                            width: 50%;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                    &:hover {
+                        .bar {
+                            width: 100%;
+                        }
+                    }
+                }
+                .sm_nav_container {
+                    background-color: #000;
+                    .offcanvas-header {
+                        justify-content: flex-end;
+                        .close_btn {
+                            font-family: $secFont;
+                            font-weight: 500;
+                            svg {
+                                fill: $linkColor;
+                                transition: 0.5s ease-in-out;
+                                transform: rotateZ(-360deg);
+                            }
+                            &:hover {
+                                svg {
+                                    fill: $mainColor;
+                                    transform: rotateZ(360deg);
+                                }
+                            }
+                        }
+                    }
+                    .offcanvas-body {
+                        padding: 0 0 1rem 0;
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            width: 7px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            box-shadow: inset 0 0 10px $mainColor;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: $mainColor;
+                            outline: 1px solid rgb(151, 112, 3);
+                        }
+                        ul {
+                            .sm_nav_item {
+                                cursor: pointer;
+
+                                border-bottom: 1px solid #3c3c3c;
+                                &:first-child {
+                                    border-top: 1px solid #3c3c3c;
+                                }
+                                h2 {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    height: 50px;
+                                    margin-bottom: 0;
+                                    padding-left: 15px;
+                                }
+                                .icon {
+                                    width: 50px;
+                                    height: 100%;
+                                    border-left: 1px solid #3c3c3c;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    &:focus {
+                                        border-left: 1px solid #3c3c3c !important;
+                                    }
+                                    .plus {
+                                        background-color: $linkColor;
+                                        width: 100%;
+                                        width: 12px;
+                                        height: 2px;
+                                        display: block;
+                                        position: relative;
+                                        transition: 0.5s ease-in-out;
+                                        &::before {
+                                            content: "";
+                                            position: absolute;
+                                            background-color: $linkColor;
+                                            height: 12px;
+                                            width: 2px;
+                                            top: -5px;
+                                            left: 5px;
+                                            transition: 0.5s ease-in-out;
+                                        }
+                                    }
+
+                                    &:not(.collapsed) {
+                                        .plus {
+                                            &::before {
+                                                transform: rotate(90deg);
+                                                opacity: 0;
+                                            }
+                                        }
+                                    }
+                                    &:hover {
+                                        .plus {
+                                            background-color: $mainColor;
+                                            &::before {
+                                                background-color: $mainColor;
+                                            }
+                                        }
+                                    }
+                                }
+                                a {
+                                    color: $linkColor;
+                                    font-size: 15px;
+                                    font-family: $secFont;
+                                    text-transform: uppercase;
+                                    transition: 0.5s ease-in-out;
+                                }
+                                &:hover {
+                                    .sm_nav_link {
+                                        color: $mainColor;
+                                        padding-left: 10px;
+                                    }
+                                }
+                                .accordion-collapse {
+                                    background-color: #22222278;
+                                    li {
+                                        padding: 12px 25px;
+                                        border-bottom: 1px solid #3c3c3c;
+                                        &:first-child {
+                                            border-top: 1px solid #3c3c3c;
+                                        }
+                                        &:last-child {
+                                            border: 0;
+                                        }
+                                        &:hover {
+                                            a {
+                                                color: $mainColor;
+                                                padding-left: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                                #accordionExample2 {
+                                    & > li {
+                                        padding: 0;
+                                        a {
+                                            color: $linkColor;
+                                            padding: 0;
+                                            transition: 0.5s ease-in-out;
+                                        }
+                                        &:hover {
+                                            .sm_nav_link {
+                                                color: $mainColor;
+                                                padding-left: 10px;
+                                            }
+                                        }
+                                        .accordion-collapse {
+                                            li {
+                                                &:hover {
+                                                    a {
+                                                        color: $mainColor;
+                                                        padding-left: 10px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &:last-child {
+                                            padding: 1rem;
+                                            display: block;
+                                            img {
+                                                width: 200px;
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media #{$mediaS} {
+            flex-direction: column;
+            .nav_action {
+                width: 100%;
+                .nav_action_left {
+                    & > div {
+                        margin-right: 20px;
+                        padding: 15px 0 25px;
+                    }
+                    .currency_container {
+                        padding: 15px 0 25px;
+                    }
+                    .dropdown_details {
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+}
